@@ -14,11 +14,14 @@ function App() {
         <Count>Tokens: {tokens}</Count>
         <Count>Ratio: {ratio}</Count>
         <Buttons>
+          <Button mode="secondary" onClick={() => api.addToPool(10)}>
+            Add to Pool
+          </Button>
           <Button mode="secondary" onClick={() => api.sellTokens(10)}>
-            Sell 10 Tokens
+            Sell Tokens
           </Button>
           <Button mode="secondary" onClick={() => api.buyTokens(10)}>
-            Buy 10 Tokens
+            Buy Tokens
           </Button>
         </Buttons>
       </BaseLayout>
