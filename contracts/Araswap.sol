@@ -31,6 +31,8 @@ contract Araswap is AragonApp {
 
     /// ACL
     bytes32 constant public POOL_ROLE = keccak256("POOL_ROLE");
+    bytes32 constant public BUY_ROLE = keccak256("BUY_ROLE");
+    bytes32 constant public SELL_ROLE = keccak256("SELL_ROLE");
 
     function initialize(ERC20 _token) public onlyInit {
         initialized();
@@ -57,7 +59,7 @@ contract Araswap is AragonApp {
         emit AddedToPool(msg.sender, msg.value, _tokenAmount);
     }
 
-    function sellTokens(uint256 _tokenAmount) external {
+    function sellTokens(uint256 _tokenAmount) external auth(SELL_ROLE) {
         require(_tokenAmount > 0, ERROR_ZERO_TOKENS);
 
         uint256 newTokenValue = tokenValue.add(_tokenAmount);
@@ -71,7 +73,7 @@ contract Araswap is AragonApp {
         require(token.safeTransferFrom(msg.sender, address(this), _tokenAmount), ERROR_TOKEN_TRANSFER_FAILED);
     }
 
-    function buyTokens(uint256 _tokenAmount) external payable {
+    function buyTokens(uint256 _tokenAmount) external payable auth(BUY_ROLE) {
         require(msg.value > 0, ERROR_ZERO_VALUE);
         require(_tokenAmount > 0, ERROR_ZERO_TOKENS);
 

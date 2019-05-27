@@ -4,6 +4,16 @@
       "name": "Add funds to pool",
       "id": "POOL_ROLE",
       "params": []
+    },
+    {
+      "name": "Buy tokens",
+      "id": "BUY_ROLE",
+      "params": []
+    },
+    {
+      "name": "Sell tokens",
+      "id": "SELL_ROLE",
+      "params": []
     }
   ],
   "environments": {
