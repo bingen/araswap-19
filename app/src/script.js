@@ -8,28 +8,17 @@ const api = new AragonApi()
 
 api.store(
   async (state, event) => {
-    let newState
+    let newState = state
 
     switch (event.event) {
       case INITIALIZATION_TRIGGER:
-        newState = {
-          eth: await getValue(),
-          tokens: await getTokens(),
-          ratio: await getCurrentRatio()
-        }
-        break
+      case 'addedToPool':
       case 'Increment':
-        newState = {
-          eth: await getValue(),
-          tokens: await getTokens(),
-          ratio: await getCurrentRatio()
-        }
-        break
       case 'Decrement':
         newState = {
           eth: await getValue(),
           tokens: await getTokens(),
-          ratio: await getCurrentRatio()
+          ratio: await getCurrentRatio(),
         }
         break
       default:
@@ -45,13 +34,13 @@ api.store(
 )
 
 async function getValue() {
-  return parseInt(await api.call('value').toPromise(), 10)
+  return api.call('ethValue').toPromise()
 }
 
 async function getTokens() {
-  return parseInt(await api.call('value').toPromise(), 10)
+  return api.call('tokenValue').toPromise()
 }
 
-async function getRatio() {
-  return parseInt(await api.call('value').toPromise(), 10)
+async function getCurrentRatio() {
+  return api.call('currentRatio').toPromise()
 }
