@@ -5,7 +5,7 @@ import App from './App'
 
 const reducer = state => {
   if (state === null) {
-    return { count: 0, syncing: true }
+    return { eth: 0, tokens: 0, ratio: 0, syncing: true }
   }
   return state
 }
