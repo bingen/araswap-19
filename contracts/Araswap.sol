@@ -16,9 +16,9 @@ contract Araswap is AragonApp {
     // This is the source of truth, we keep track of it to avoid anybody can
     // modify the ratio by sending eth or tokens to the contract
     // (although it'd be certainly stupid, as they would be lost funds)
-    uint256 ethValue;
-    uint256 tokenValue;
-    uint256 currentRatio;
+    uint256 public ethValue;
+    uint256 public tokenValue;
+    uint256 public currentRatio;
 
     mapping(address => uint256) ethHoldings;
     mapping(address => uint256) tokenHoldings;
