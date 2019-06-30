@@ -6,3 +6,6 @@ ipfs.cmd
 package-lock.json
 coverage.json
 coverage
+
+# shadowlands
+__pycache__/
